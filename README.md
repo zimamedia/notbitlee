@@ -1,6 +1,6 @@
 # NotBitLee
 
-An open-source, white-label link shortener with click analytics, QR codes and team logins. It deploys to **your own Cloudflare account** in one click: no server, no hosting bill, no per-seat pricing.
+**[notbitlee.com](https://notbitlee.com)** · An open-source, white-label link shortener with click analytics, QR codes and team logins. It deploys to **your own Cloudflare account** in one click: no server, no hosting bill, no per-seat pricing.
 
 [![MIT licence](https://img.shields.io/badge/licence-MIT-0e7c66)](LICENSE)
 [![CI](https://github.com/zimamedia/notbitlee/actions/workflows/ci.yml/badge.svg)](https://github.com/zimamedia/notbitlee/actions/workflows/ci.yml)
@@ -134,6 +134,7 @@ npm run deploy
 - `src/`: the React dashboard.
 - `shared/`: code used by both, such as slug rules, the Bitly CSV parser and click summaries.
 - `migrations/`: the D1 schema. It is applied automatically on every deploy.
+- `site/`: the [notbitlee.com](https://notbitlee.com) landing page. It isn't part of the app and doesn't deploy with it.
 
 Back-halves `admin`, `api` and `assets` are reserved for the app.
 

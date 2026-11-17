@@ -1,0 +1,14 @@
+{
+  "name": "notbitlee-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The notbitlee.com landing page. Static files served by Cloudflare Workers.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.160.1"
+  }
+}

@@ -52,6 +52,7 @@ npm run build
 | `shared/` | Code both sides use: slug rules, routing, the CSV importer, click summaries |
 | `migrations/` | The D1 database schema, applied on every deploy |
 | `tests/` | Unit tests (Vitest) |
+| `site/` | The notbitlee.com landing page, deployed separately (see `site/README.md`) |
 
 ## Pull requests
 
