@@ -1,11 +1,16 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  // The notbitlee.com landing page: static files only, no Worker code.
+  // The notbitlee.com landing page. The Worker only redirects www to the bare domain;
+  // every page is a static file in ./public.
   "name": "notbitlee-site",
+  "main": "./worker.js",
   "compatibility_date": "2026-11-12",
   "assets": {
     "directory": "./public",
-    "not_found_handling": "404-page"
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    // Run the Worker first so requests to www are redirected before a file is served.
+    "run_worker_first": true
   },
   "routes": [
     { "pattern": "notbitlee.com", "custom_domain": true },

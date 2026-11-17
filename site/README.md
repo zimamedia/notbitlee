@@ -2,6 +2,8 @@
 
 The landing page for NotBitLee: plain HTML and CSS, served as static files by a Cloudflare Worker. There's no build step: edit `public/` and push.
 
+`www.notbitlee.com` permanently redirects to `notbitlee.com`, keeping the path and query string. That is the only thing `worker.js` does.
+
 | Path | What it is |
 | --- | --- |
 | `public/index.html` | The page |
@@ -10,7 +12,8 @@ The landing page for NotBitLee: plain HTML and CSS, served as static files by a 
 | `public/_headers` | Security and cache headers |
 | `public/og.png` | Preview image for social posts (1200×630) |
 | `public/fonts/` | Inter and Space Grotesk, served from the site (SIL Open Font Licence) |
-| `wrangler.jsonc` | Worker name and the `notbitlee.com` custom domain |
+| `worker.js` | Redirects `www.notbitlee.com` to `notbitlee.com` |
+| `wrangler.jsonc` | Worker name and the `notbitlee.com` and `www` custom domains |
 
 ## Preview locally
 
