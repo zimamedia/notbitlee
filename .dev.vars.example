@@ -1,0 +1,4 @@
+# The email address you will sign in with.
+ADMIN_EMAIL=you@example.com
+# The password for that account. Use a long one: this protects your dashboard.
+ADMIN_PASSWORD=change-me-to-something-long

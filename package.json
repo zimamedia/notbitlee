@@ -1,0 +1,99 @@
+{
+  "name": "notbitlee",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Open-source, white-label link shortener with click analytics and QR codes. One-click deploy to your own Cloudflare account.",
+  "license": "MIT",
+  "author": "Zima Media (https://zimamedia.com)",
+  "homepage": "https://github.com/zimamedia/notbitlee#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zimamedia/notbitlee.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zimamedia/notbitlee/issues"
+  },
+  "keywords": [
+    "link-shortener",
+    "url-shortener",
+    "short-links",
+    "qr-code",
+    "cloudflare-workers",
+    "cloudflare-d1",
+    "self-hosted",
+    "white-label",
+    "open-source",
+    "analytics"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "test": "vitest run",
+    "typecheck": "tsc -b",
+    "cf-typegen": "wrangler types --strict-vars=false",
+    "deploy": "npm run build && npm run db:migrate:remote && wrangler deploy",
+    "preview": "vite preview",
+    "db:migrate:local": "wrangler d1 migrations apply DB --local",
+    "db:migrate:remote": "wrangler d1 migrations apply DB --remote",
+    "import:bitly": "node --experimental-strip-types scripts/import-bitly.ts"
+  },
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.3.1",
+    "@radix-ui/react-label": "^2.1.17",
+    "@radix-ui/react-slot": "^1.5.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "jose": "^6.2.17",
+    "lucide-react": "^1.72.0",
+    "qrcode": "^1.5.4",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.5",
+    "tailwind-merge": "^3.7.0"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.69.0",
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/node": "^24.19.2",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "oxlint": "^1.90.0",
+    "tailwindcss": "^4.3.5",
+    "typescript": "~7.0.2",
+    "vite": "^8.3.6",
+    "vitest": "^5.1.0",
+    "wrangler": "^4.160.1"
+  },
+  "cloudflare": {
+    "bindings": {
+      "ADMIN_EMAIL": {
+        "description": "The email address you will **sign in with**. You become the owner of this dashboard."
+      },
+      "ADMIN_PASSWORD": {
+        "description": "Your sign-in password. Use **at least 10 characters**; a password manager can make one for you."
+      },
+      "BRAND_NAME": {
+        "description": "The name shown on your dashboard. You can change it, your logo and your colour later in **Settings**."
+      },
+      "SHORT_DOMAIN": {
+        "description": "Optional. The domain your short links use, e.g. `go.example.com`. Leave empty to start on your free `workers.dev` address."
+      },
+      "DASHBOARD_DOMAIN": {
+        "description": "Optional. A separate domain for the dashboard, e.g. `links.example.com`. Leave empty to keep it at `/admin`."
+      },
+      "ALLOWED_EMAIL_DOMAIN": {
+        "description": "Optional. Only used with Google sign-in: lets everyone at this Google Workspace domain sign in."
+      },
+      "TIMEZONE": {
+        "description": "Time zone for daily click charts, e.g. `Europe/Madrid` or `America/New_York`."
+      },
+      "DB": {
+        "description": "Holds your links, clicks, team and settings. Created for you."
+      }
+    }
+  }
+}

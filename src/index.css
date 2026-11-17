@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Set at runtime from Settings > Branding. */
+  --color-brand: #0e7c66;
+  --color-on-brand: #ffffff;
+  --color-brand-soft: color-mix(in oklab, var(--color-brand) 10%, white);
+  --color-brand-strong: color-mix(in oklab, var(--color-brand) 82%, black);
+
+  --color-canvas: #f4f6fa;
+  --color-surface: #ffffff;
+  --color-ink: #1b2330;
+  --color-muted: #5e6a7e;
+  --color-faint: #8a94a6;
+  --color-line: #dde2ec;
+  --color-hover: #eef1f6;
+  --color-danger: #c4352b;
+}
+
+@layer base {
+  html {
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}

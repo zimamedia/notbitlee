@@ -1,0 +1,44 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "notbitlee",
+  "main": "./worker/index.ts",
+  "compatibility_date": "2026-11-12",
+  "compatibility_flags": ["nodejs_compat"],
+  // The app works straight away on <name>.<account>.workers.dev.
+  // Add your own short domain later in the Cloudflare dashboard (Worker > Settings > Domains & Routes).
+  "workers_dev": true,
+  "preview_urls": false,
+  "upload_source_maps": true,
+  "keep_vars": true,
+  "observability": {
+    "enabled": true,
+    "logs": { "enabled": true, "head_sampling_rate": 1 }
+  },
+  "vars": {
+    // Name shown on the dashboard and login page until you change it in Settings.
+    "BRAND_NAME": "NotBitLee",
+    // Optional. The domain your short links live on, e.g. "go.example.com". Leave empty to use the domain the app is visited on.
+    "SHORT_DOMAIN": "",
+    // Optional. A separate dashboard domain, e.g. "links.example.com". Leave empty to keep the dashboard at /admin on the short domain.
+    "DASHBOARD_DOMAIN": "",
+    // Optional. Lets anyone with a verified Google Workspace account on this domain sign in (needs Google sign-in set up).
+    "ALLOWED_EMAIL_DOMAIN": "",
+    // Time zone used to group clicks by day, e.g. "Europe/Madrid" or "America/New_York".
+    "TIMEZONE": "UTC"
+  },
+  "assets": {
+    "not_found_handling": "single-page-application",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "notbitlee",
+      // Replaced with your own database ID when you use the Deploy to Cloudflare button.
+      // For a manual setup, run `npx wrangler d1 create notbitlee` and paste the ID here.
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations"
+    }
+  ]
+}
